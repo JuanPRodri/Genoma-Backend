@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prueba.genomabackend.dto.AnalisisDto;
 import com.prueba.genomabackend.dto.MutacionDto;
 import com.prueba.genomabackend.model.Analisis;
 import com.prueba.genomabackend.repository.AnalisisRepository;
@@ -20,9 +21,10 @@ public class AnalisisService {
 		return (List<Analisis>) analisisRepository.findAll();
 	}
 	
-	public MutacionDto findMutant(Analisis analizar) {
+	public MutacionDto findMutant(AnalisisDto analizar) {
 			
-		MutacionDto nuevaMutacion = new MutacionDto(analizar.isMutacion());
+		MutacionDto nuevaMutacion = new MutacionDto(false);
+		Analisis analisis = new Analisis(analizar.getCadenaAdn());
 		
 		List<String> ubicacionMutaciones = new ArrayList<String>();
 		
@@ -62,7 +64,14 @@ public class AnalisisService {
 			}
 		}
 		
-		analisisRepository.save(analizar);
+		
+		nuevaMutacion.setUbicacionMutaciones(ubicacionMutaciones);
+		
+		if(ubicacionMutaciones.size() > 0) {
+			nuevaMutacion.setMutacion(true);
+			analisis.setMutacion(true);
+		}
+		analisisRepository.save(analisis);
 		
 		return nuevaMutacion;
 		

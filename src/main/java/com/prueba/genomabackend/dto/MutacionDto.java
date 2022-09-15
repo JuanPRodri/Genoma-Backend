@@ -11,7 +11,6 @@ private boolean mutacion;
 	
 	
 	public MutacionDto(boolean mutacion) {
-		super();
 		this.mutacion = mutacion;
 	}
 	public boolean isMutacion() {

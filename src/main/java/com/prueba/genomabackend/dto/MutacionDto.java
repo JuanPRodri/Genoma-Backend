@@ -1,25 +1,24 @@
-package com.prueba.genomabackend.model;
+package com.prueba.genomabackend.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mutacion {
+public class MutacionDto {
 	
-	private boolean estadoAdn;
+private boolean mutacion;
 	
 	private List<String> ubicacionMutaciones = new ArrayList<String>();
 	
 	
-	
-	public Mutacion(boolean estadoAdn) {
+	public MutacionDto(boolean mutacion) {
 		super();
-		this.estadoAdn = estadoAdn;
+		this.mutacion = mutacion;
 	}
-	public boolean isEstadoAdn() {
-		return estadoAdn;
+	public boolean isMutacion() {
+		return mutacion;
 	}
-	public void setEstadoAdn(boolean estadoAdn) {
-		this.estadoAdn = estadoAdn;
+	public void setMutacion(boolean mutacion) {
+		this.mutacion = mutacion;
 	}
 	public List<String> getUbicacionMutaciones() {
 		return ubicacionMutaciones;
@@ -27,7 +26,5 @@ public class Mutacion {
 	public void setUbicacionMutaciones(List<String> ubicacionMutaciones) {
 		this.ubicacionMutaciones = ubicacionMutaciones;
 	}
-	
-	
 
 }
